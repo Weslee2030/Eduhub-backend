@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Operating Systems - EduHub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fff8e1;
+      color: #222;
+    }
+    header {
+      background: #f9a825;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      background: #f57f17;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+      line-height: 1.7;
+    }
+    .notes, .examples, .quiz {
+      margin-top: 30px;
+    }
+    pre {
+      background: #fff3e0;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .quiz button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #f9a825;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .quiz button:hover {
+      background: #f57f17;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Operating Systems</h1>
+    <p>Managing hardware, processes, and memory in modern computing</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="course-cs.html">Back to Course</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="payment.html">Upgrade</a>
+  </nav>
+
+  <div class="container">
+    <div class="notes">
+      <h2>📝 Learning Notes</h2>
+
+      <h3>🖥️ What is an Operating System?</h3>
+      <p>An operating system (OS) is system software that manages computer hardware, software resources, and provides services for computer programs. It acts as an intermediary between users and the computer hardware.</p>
+
+      <h3>📋 Main Functions of an Operating System</h3>
+      <ul>
+        <li><strong>Process Management:</strong> Handles creation, scheduling, and termination of processes</li>
+        <li><strong>Memory Management:</strong> Allocates memory to programs and manages swapping between RAM and disk</li>
+        <li><strong>File System Management:</strong> Controls how data is stored and retrieved</li>
+        <li><strong>Device Management:</strong> Manages hardware devices like printers, disks, etc.</li>
+        <li><strong>User Interface:</strong> Provides a way to interact with the system (CLI/GUI)</li>
+      </ul>
+
+      <h3>🧠 Types of Operating Systems</h3>
+      <ul>
+        <li><strong>Batch OS:</strong> Executes batches of jobs without user interaction</li>
+        <li><strong>Time-Sharing OS:</strong> Allows multiple users to share system resources simultaneously</li>
+        <li><strong>Real-Time OS:</strong> Guarantees response within strict time constraints (e.g., embedded systems)</li>
+        <li><strong>Distributed OS:</strong> Manages a group of independent computers and makes them appear to the user as a single system</li>
+        <li><strong>Mobile OS:</strong> Used in smartphones and tablets (e.g., Android, iOS)</li>
+      </ul>
+
+      <h3>🛠️ Popular Operating Systems</h3>
+      <ul>
+        <li>Windows</li>
+        <li>Linux (Ubuntu, Fedora, Arch)</li>
+        <li>macOS</li>
+        <li>Android</li>
+        <li>iOS</li>
+      </ul>
+    </div>
+
+    <div class="quiz">
+      <h2>🧠 Quick Quiz</h2>
+      <form id="quizForm">
+        <div>
+          <h3>1. What is the main role of an operating system?</h3>
+          <input type="radio" name="q1" value="a"> Run antivirus software<br>
+          <input type="radio" name="q1" value="b"> Manage computer hardware and software<br>
+          <input type="radio" name="q1" value="c"> Play games<br>
+        </div>
+
+        <div>
+          <h3>2. Which OS type is used in smartphones?</h3>
+          <input type="radio" name="q2" value="a"> Batch OS<br>
+          <input type="radio" name="q2" value="b"> Mobile OS<br>
+          <input type="radio" name="q2" value="c"> Time-Sharing OS<br>
+        </div>
+
+        <div>
+          <h3>3. Which of the following is NOT a function of an OS?</h3>
+          <input type="radio" name="q3" value="a"> Memory management<br>
+          <input type="radio" name="q3" value="b"> Process management<br>
+          <input type="radio" name="q3" value="c"> Sending emails<br>
+        </div>
+
+        <div>
+          <h3>4. Which OS is open source?</h3>
+          <input type="radio" name="q4" value="a"> Linux<br>
+          <input type="radio" name="q4" value="b"> Windows<br>
+          <input type="radio" name="q4" value="c"> macOS<br>
+        </div>
+
+        <div>
+          <h3>5. What is a real-time OS?</h3>
+          <input type="radio" name="q5" value="a"> An OS that plays music<br>
+          <input type="radio" name="q5" value="b"> An OS with delayed response<br>
+          <input type="radio" name="q5" value="c"> An OS that responds immediately in critical systems<br>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+      </form>
+      <p id="quizResult"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === "c") score++;
+      if (document.querySelector('input[name="q4"]:checked')?.value === "a") score++;
+      if (document.querySelector('input[name="q5"]:checked')?.value === "c") score++;
+      document.getElementById("quizResult").textContent = "✅ You scored " + score + "/5";
+    });
+  </script>
+</body>
+</html>

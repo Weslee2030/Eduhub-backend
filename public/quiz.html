@@ -1,0 +1,46 @@
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyD-1DdYED3c3RbHkXXI3Dq0UeCU9rJdpd0",
+    authDomain: "eduhub-37795.firebaseapp.com",
+    projectId: "eduhub-37795",
+    storageBucket: "eduhub-37795.appspot.com",
+    messagingSenderId: "993613593949",
+    appId: "1:993613593949:web:f390a4a2893e192e4d7e97"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  window.submitQuiz = async function () {
+    const score =
+      parseInt(document.querySelector('input[name="q1"]:checked')?.value || 0) +
+      parseInt(document.querySelector('input[name="q2"]:checked')?.value || 0) +
+      parseInt(document.querySelector('input[name="q3"]:checked')?.value || 0) +
+      parseInt(document.querySelector('input[name="q4"]:checked')?.value || 0) +
+      parseInt(document.querySelector('input[name="q5"]:checked')?.value || 0);
+
+    const resultBox = document.getElementById("resultBox");
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        try {
+          await addDoc(collection(db, "quizScores"), {
+            email: user.email,
+            score: score,
+            createdAt: new Date().toISOString()
+          });
+          resultBox.textContent = `✅ Your score (${score}/5) has been saved!`;
+        } catch (error) {
+          resultBox.textContent = `❌ Error saving score: ${error.message}`;
+        }
+      } else {
+        resultBox.textContent = `❌ You must be logged in to save your score.`;
+      }
+    });
+  };
+</script><

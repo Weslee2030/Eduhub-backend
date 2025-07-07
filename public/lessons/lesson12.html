@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Operating Systems & Shell - EduHub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #e0f7fa;
+      color: #222;
+    }
+    header {
+      background: #00796b;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      background: #004d40;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+      line-height: 1.7;
+    }
+    .notes, .examples, .quiz {
+      margin-top: 30px;
+    }
+    pre {
+      background: #eeeeee;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .quiz button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #00796b;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .quiz button:hover {
+      background: #004d40;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Operating Systems & Shell Commands</h1>
+    <p>Learn how computers manage processes and how to control them with commands</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="course-cs.html">Back to Course</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="payment.html">Upgrade</a>
+  </nav>
+
+  <div class="container">
+    <div class="notes">
+      <h2>📝 Learning Notes</h2>
+
+      <h3>💻 What is an Operating System (OS)?</h3>
+      <p>An Operating System is system software that manages hardware resources and provides services for computer programs. It acts as a bridge between the user and the hardware.</p>
+
+      <h3>📂 Main Functions of an OS</h3>
+      <ul>
+        <li>Process Management</li>
+        <li>Memory Management</li>
+        <li>File System Management</li>
+        <li>Device and Input/Output Handling</li>
+        <li>Security and User Access</li>
+      </ul>
+
+      <h3>⚙️ Common Operating Systems</h3>
+      <ul>
+        <li>Windows</li>
+        <li>Linux (Ubuntu, Fedora)</li>
+        <li>macOS</li>
+        <li>Android (mobile OS)</li>
+      </ul>
+
+      <h3>🧠 What is a Shell?</h3>
+      <p>A shell is a program that allows users to interact with the OS using commands. The most common shell in Linux is <strong>Bash</strong>.</p>
+
+      <h3>🧾 Common Shell Commands (Linux/Unix)</h3>
+      <ul>
+        <li><code>pwd</code> – Print current directory</li>
+        <li><code>ls</code> – List files in a directory</li>
+        <li><code>cd</code> – Change directory</li>
+        <li><code>mkdir</code> – Make a new folder</li>
+        <li><code>rm</code> – Delete files or folders</li>
+        <li><code>cp</code> – Copy files/folders</li>
+        <li><code>mv</code> – Move/rename files</li>
+        <li><code>touch</code> – Create a new empty file</li>
+      </ul>
+    </div>
+
+    <div class="examples">
+      <h2>💻 Example Shell Commands</h2>
+      <pre><code># Create a folder named 'projects'
+mkdir projects
+
+# Navigate into that folder
+cd projects
+
+# Create a new file
+touch index.js
+
+# List files
+ls
+      </code></pre>
+    </div>
+
+    <div class="quiz">
+      <h2>🧠 Quick Quiz</h2>
+      <form id="quizForm">
+        <div>
+          <h3>1. What does an Operating System do?</h3>
+          <input type="radio" name="q1" value="a"> Only connects to Wi-Fi<br>
+          <input type="radio" name="q1" value="b"> Manages hardware and software<br>
+          <input type="radio" name="q1" value="c"> Draws graphics<br>
+        </div>
+
+        <div>
+          <h3>2. Which command lists files in a directory?</h3>
+          <input type="radio" name="q2" value="a"> cd<br>
+          <input type="radio" name="q2" value="b"> ls<br>
+          <input type="radio" name="q2" value="c"> run<br>
+        </div>
+
+        <div>
+          <h3>3. What is Bash?</h3>
+          <input type="radio" name="q3" value="a"> A game<br>
+          <input type="radio" name="q3" value="b"> A type of network<br>
+          <input type="radio" name="q3" value="c"> A shell in Linux<br>
+        </div>
+
+        <div>
+          <h3>4. Which command creates a new folder?</h3>
+          <input type="radio" name="q4" value="a"> rm<br>
+          <input type="radio" name="q4" value="b"> mkdir<br>
+          <input type="radio" name="q4" value="c"> mv<br>
+        </div>
+
+        <div>
+          <h3>5. Which OS is commonly used in servers?</h3>
+          <input type="radio" name="q5" value="a"> Linux<br>
+          <input type="radio" name="q5" value="b"> Android<br>
+          <input type="radio" name="q5" value="c"> iOS<br>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+      </form>
+      <p id="quizResult"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === "c") score++;
+      if (document.querySelector('input[name="q4"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q5"]:checked')?.value === "a") score++;
+      document.getElementById("quizResult").textContent = "✅ You scored " + score + "/5";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cybersecurity Fundamentals - EduHub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fff3e0;
+      color: #222;
+    }
+    header {
+      background: #ef6c00;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      background: #e65100;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+      line-height: 1.7;
+    }
+    .notes, .quiz {
+      margin-top: 30px;
+    }
+    pre {
+      background: #ffe0b2;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .quiz button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #ef6c00;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .quiz button:hover {
+      background: #e65100;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cybersecurity Fundamentals</h1>
+    <p>Learn how to protect systems, data, and networks from threats</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="course-cs.html">Back to Course</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="payment.html">Upgrade</a>
+  </nav>
+
+  <div class="container">
+    <div class="notes">
+      <h2>📝 Learning Notes</h2>
+
+      <h3>🔐 What is Cybersecurity?</h3>
+      <p>Cybersecurity is the practice of protecting systems, networks, and data from digital attacks. These attacks aim to access, steal, or destroy sensitive information or disrupt operations.</p>
+
+      <h3>🛡️ Common Threats</h3>
+      <ul>
+        <li><strong>Malware:</strong> Malicious software (viruses, worms, trojans)</li>
+        <li><strong>Phishing:</strong> Fake emails/websites tricking users into revealing data</li>
+        <li><strong>DDoS Attacks:</strong> Overloading servers to make them crash</li>
+        <li><strong>Ransomware:</strong> Encrypts files and demands payment</li>
+      </ul>
+
+      <h3>🔧 Key Cybersecurity Measures</h3>
+      <ul>
+        <li><strong>Firewalls:</strong> Monitor and control network traffic</li>
+        <li><strong>Antivirus Software:</strong> Detect and remove malware</li>
+        <li><strong>Encryption:</strong> Secure sensitive data using algorithms</li>
+        <li><strong>Two-Factor Authentication (2FA):</strong> Adds an extra security layer</li>
+        <li><strong>Regular Software Updates:</strong> Patch known vulnerabilities</li>
+      </ul>
+
+      <h3>👥 Human Element</h3>
+      <p>Many breaches happen due to human error. Cybersecurity also includes educating users to recognize threats like phishing or weak passwords.</p>
+
+      <h3>📚 Career Paths</h3>
+      <ul>
+        <li>Security Analyst</li>
+        <li>Penetration Tester (Ethical Hacker)</li>
+        <li>Incident Responder</li>
+        <li>Security Architect</li>
+        <li>Cryptographer</li>
+      </ul>
+    </div>
+
+    <div class="quiz">
+      <h2>🧠 Quick Quiz</h2>
+      <form id="quizForm">
+        <div>
+          <h3>1. What is the goal of cybersecurity?</h3>
+          <input type="radio" name="q1" value="a"> Improve website layout<br>
+          <input type="radio" name="q1" value="b"> Protect systems from digital attacks<br>
+          <input type="radio" name="q1" value="c"> Make computers faster<br>
+        </div>
+
+        <div>
+          <h3>2. Which of these is a type of malware?</h3>
+          <input type="radio" name="q2" value="a"> Antivirus<br>
+          <input type="radio" name="q2" value="b"> Trojan<br>
+          <input type="radio" name="q2" value="c"> Firewall<br>
+        </div>
+
+        <div>
+          <h3>3. What does a firewall do?</h3>
+          <input type="radio" name="q3" value="a"> Decorates your screen<br>
+          <input type="radio" name="q3" value="b"> Blocks or allows traffic based on rules<br>
+          <input type="radio" name="q3" value="c"> Opens ports randomly<br>
+        </div>
+
+        <div>
+          <h3>4. What is 2FA used for?</h3>
+          <input type="radio" name="q4" value="a"> Enhance login security<br>
+          <input type="radio" name="q4" value="b"> Block websites<br>
+          <input type="radio" name="q4" value="c"> Scan emails<br>
+        </div>
+
+        <div>
+          <h3>5. What is phishing?</h3>
+          <input type="radio" name="q5" value="a"> A coding language<br>
+          <input type="radio" name="q5" value="b"> Fake messages tricking users<br>
+          <input type="radio" name="q5" value="c"> A virus that spreads via Bluetooth<br>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+      </form>
+      <p id="quizResult"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q4"]:checked')?.value === "a") score++;
+      if (document.querySelector('input[name="q5"]:checked')?.value === "b") score++;
+      document.getElementById("quizResult").textContent = "✅ You scored " + score + "/5";
+    });
+  </script>
+</body>
+</html>

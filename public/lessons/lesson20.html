@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Databases and SQL - EduHub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fff3e0;
+      color: #222;
+    }
+    header {
+      background: #ef6c00;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      background: #e65100;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+      line-height: 1.7;
+    }
+    .notes, .quiz {
+      margin-top: 30px;
+    }
+    pre {
+      background: #ffe0b2;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .quiz button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #ef6c00;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .quiz button:hover {
+      background: #e65100;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Databases and SQL</h1>
+    <p>How data is stored, retrieved, and managed</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="course-cs.html">Back to Course</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="payment.html">Upgrade</a>
+  </nav>
+
+  <div class="container">
+    <div class="notes">
+      <h2>📝 Learning Notes</h2>
+
+      <h3>📦 What is a Database?</h3>
+      <p>A database is a structured collection of data that can be accessed, managed, and updated efficiently. Databases are used in nearly every software application, including websites, mobile apps, and enterprise systems.</p>
+
+      <h3>🛠️ Types of Databases</h3>
+      <ul>
+        <li><strong>Relational Databases (SQL):</strong> Organize data in tables (rows and columns). Example: MySQL, PostgreSQL</li>
+        <li><strong>NoSQL Databases:</strong> Use flexible data models like documents or key-value pairs. Example: MongoDB, Firebase</li>
+      </ul>
+
+      <h3>🧑‍💻 What is SQL?</h3>
+      <p>SQL (Structured Query Language) is used to communicate with relational databases. It helps create, read, update, and delete data (often called CRUD operations).</p>
+
+      <h3>📋 Common SQL Commands</h3>
+      <pre>
+-- Create a table
+CREATE TABLE users (
+  id INT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100)
+);
+
+-- Insert data
+INSERT INTO users (id, name, email) VALUES (1, 'Wesley', 'wesley@example.com');
+
+-- Read data
+SELECT * FROM users;
+
+-- Update data
+UPDATE users SET name = 'Wesley Orina' WHERE id = 1;
+
+-- Delete data
+DELETE FROM users WHERE id = 1;
+      </pre>
+
+      <h3>🔐 Why Databases Matter</h3>
+      <ul>
+        <li>Store and retrieve large amounts of data quickly</li>
+        <li>Ensure data integrity, security, and relationships</li>
+        <li>Allow efficient access by multiple users or systems</li>
+      </ul>
+    </div>
+
+    <div class="quiz">
+      <h2>🧠 Quick Quiz</h2>
+      <form id="quizForm">
+        <div>
+          <h3>1. What is SQL used for?</h3>
+          <input type="radio" name="q1" value="a"> Designing graphics<br>
+          <input type="radio" name="q1" value="b"> Communicating with databases<br>
+          <input type="radio" name="q1" value="c"> Writing emails<br>
+        </div>
+
+        <div>
+          <h3>2. Which of the following is a relational database?</h3>
+          <input type="radio" name="q2" value="a"> MongoDB<br>
+          <input type="radio" name="q2" value="b"> Firebase<br>
+          <input type="radio" name="q2" value="c"> MySQL<br>
+        </div>
+
+        <div>
+          <h3>3. What does CRUD stand for?</h3>
+          <input type="radio" name="q3" value="a"> Create, Read, Update, Delete<br>
+          <input type="radio" name="q3" value="b"> Copy, Run, Upload, Download<br>
+          <input type="radio" name="q3" value="c"> Connect, Render, Use, Draw<br>
+        </div>
+
+        <div>
+          <h3>4. Which command retrieves all data from a table?</h3>
+          <input type="radio" name="q4" value="a"> SELECT * FROM table_name;<br>
+          <input type="radio" name="q4" value="b"> GET table_name;<br>
+          <input type="radio" name="q4" value="c"> SHOW DATA table_name;<br>
+        </div>
+
+        <div>
+          <h3>5. What type of database is MongoDB?</h3>
+          <input type="radio" name="q5" value="a"> SQL<br>
+          <input type="radio" name="q5" value="b"> Relational<br>
+          <input type="radio" name="q5" value="c"> NoSQL<br>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+      </form>
+      <p id="quizResult"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "c") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === "a") score++;
+      if (document.querySelector('input[name="q4"]:checked')?.value === "a") score++;
+      if (document.querySelector('input[name="q5"]:checked')?.value === "c") score++;
+      document.getElementById("quizResult").textContent = "✅ You scored " + score + "/5";
+    });
+  </script>
+</body>
+</html>

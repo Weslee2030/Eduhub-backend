@@ -1,0 +1,52 @@
+const express = require('express');
+const path = require('path');
+const mongoose = require('mongoose');
+const app = express();
+
+// Middleware
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+
+// MongoDB schema
+const courseSchema = new mongoose.Schema({
+    courseName: String,
+    topic: String,
+    userId: String,
+    quizResponses: Object,
+    completed: Boolean,
+    createdAt: { type: Date, default: Date.now }
+});
+const Course = mongoose.model('Course', courseSchema);
+
+// Routes
+app.get('/business-management-topic1', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'business_management_topic1.html'));
+});
+
+app.get('/final-exam', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'final-exam.html'));
+});
+
+app.post('/submit-quiz', async (req, res) => {
+    const { userId, responses, course, topic } = req.body;
+    try {
+        const courseEntry = new Course({
+            courseName: course,
+            topic,
+            userId,
+            quizResponses: responses,
+            completed: true
+        });
+        await courseEntry.save();
+        res.status(200).json({ message: 'Quiz submitted successfully' });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to save quiz' });
+    }
+});
+
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log('✅ Connected to MongoDB'))
+    .catch(err => console.error('MongoDB connection error:', err));
+
+app.listen(3000, () => console.log('Server running on port 3000'));

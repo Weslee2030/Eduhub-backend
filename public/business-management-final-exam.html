@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Management Final Exam | EduHub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+        nav {
+            background-color: #3b82f6;
+            padding: 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        section {
+            background-color: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+        }
+        .question {
+            background-color: #e0f2fe;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+        }
+        .quiz-container input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+        .quiz-container button {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .quiz-container button:hover {
+            background-color: #2563eb;
+        }
+        #quiz-result {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            .container {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EduHub: Business Management Final Exam</h1>
+    </header>
+    <nav>
+        <a href="/index.html">Home</a>
+        <a href="/courses.html">Courses</a>
+        <a href="/quiz.html">Quizzes</a>
+        <a href="/payment.html">Payment</a>
+        <a href="/login.html">Login</a>
+    </nav>
+    <div class="container">
+        <section class="quiz-container">
+            <h2>Final Exam: Introduction to Business Management</h2>
+            <form id="quiz-form" action="/submit-quiz" method="POST">
+                <div class="question">
+                    <p>1. What is the primary goal of business management?</p>
+                    <input type="radio" name="q1" value="a">a) Maximizing employee satisfaction<br>
+                    <input type="radio" name="q1" value="b">b) Achieving organizational goals efficiently<br>
+                    <input type="radio" name="q1" value="c">c) Reducing all costs to zero<br>
+                    <input type="radio" name="q1" value="d">d) Focusing only on customer needs<br>
+                </div>
+                <div class="question">
+                    <p>2. Which is NOT a factor of production?</p>
+                    <input type="radio" name="q2" value="a">a) Land<br>
+                    <input type="radio" name="q2" value="b">b) Labor<br>
+                    <input type="radio" name="q2" value="c">c) Marketing<br>
+                    <input type="radio" name="q2" value="d">d) Capital<br>
+                </div>
+                <div class="question">
+                    <p>3. Explain the difference between autocratic and democratic management styles (Short Answer).</p>
+                    <textarea name="q3" rows="4" style="width: 100%;"></textarea>
+                </div>
+                <div class="question">
+                    <p>4. Describe the “controlling” function with an example (Short Answer).</p>
+                    <textarea name="q4" rows="4" style="width: 100%;"></textarea>
+                </div>
+                <div class="question">
+                    <p>5. A sole proprietorship is characterized by:</p>
+                    <input type="radio" name="q5" value="a">a) Unlimited liability and single ownership<br>
+                    <input type="radio" name="q5" value="b">b) Limited liability and multiple owners<br>
+                    <input type="radio" name="q5" value="c">c) Separate legal entity status<br>
+                    <input type="radio" name="q5" value="d">d) Government ownership<br>
+                </div>
+                <div class="question">
+                    <p>6. A bakery struggles to meet demand. Suggest one strategy for each management function (Case Study).</p>
+                    <textarea name="q6" rows="4" style="width: 100%;"></textarea>
+                </div>
+                <div class="question">
+                    <p>7. How does globalization impact business management? Provide an example (Short Answer).</p>
+                    <textarea name="q7" rows="4" style="width: 100%;"></textarea>
+                </div>
+                <div class="question">
+                    <p>8. Which sector includes knowledge-based services?</p>
+                    <input type="radio" name="q8" value="a">a) Primary<br>
+                    <input type="radio" name="q8" value="b">b) Secondary<br>
+                    <input type="radio" name="q8" value="c">c) Tertiary<br>
+                    <input type="radio" name="q8" value="d">d) Quaternary<br>
+                </div>
+                <div class="question">
+                    <p>9. Why is stakeholder management important? Give an example (Short Answer).</p>
+                    <textarea name="q9" rows="4" style="width: 100%;"></textarea>
+                </div>
+                <div class="question">
+                    <p>10. A tech company launches a product. Describe how it uses the four factors of production (Case Study).</p>
+                    <textarea name="q10" rows="4" style="width: 100%;"></textarea>
+                </div>
+                <button type="submit">Submit Exam</button>
+            </form>
+            <div id="quiz-result"></div>
+        </section>
+    </div>
+    <script>
+        document.getElementById('quiz-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            let score = 0;
+            const answers = { q1: 'b', q2: 'c', q5: 'a', q8: 'd' };
+            const formData = new FormData(this);
+            const responses = {};
+            for (let [key, value] of formData) {
+                responses[key] = value;
+                if (answers[key] && value === answers[key]) score++;
+            }
+            const totalMCQ = 4;
+            document.getElementById('quiz-result').innerText = `You scored ${score} out of ${totalMCQ} on multiple-choice questions. Short-answer and case-study responses require instructor review.`;
+
+            // Send to server
+            try {
+                const res = await fetch('/submit-quiz', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userId: 'GUEST', responses, course: 'Business Management', topic: 'Final Exam' })
+                });
+                const result = await res.json();
+                document.getElementById('quiz-result').innerText += ` ${result.message}`;
+            } catch (err) {
+                document.getElementById('quiz-result').innerText += ' Error submitting quiz.';
+            }
+        });
+    </script>
+</body>
+</html>

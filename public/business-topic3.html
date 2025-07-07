@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EduHub - Business Management Topic 3: Organizational Structure and Design</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 20px;
+      color: #333;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      margin: 10px 0;
+    }
+
+    .btn:hover {
+      background-color: #2980b9;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+
+    .navigation a {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .navigation a:hover {
+      background-color: #2980b9;
+    }
+
+    .quiz-result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Business Management - Topic 3: Organizational Structure and Design</h1>
+
+  <button class="btn" onclick="downloadNotes()">⬇ Download Notes</button>
+
+  <script>
+    function downloadNotes() {
+      const text = document.body.innerText;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'Business_Topic3_Organizational_Structure.txt';
+      a.click();
+    }
+  </script>
+
+  <section>
+    <h2>1. Introduction to Organizational Structure</h2>
+    <p>Organizational structure defines how tasks, authority, and responsibilities are divided, coordinated, and controlled within an organization.</p>
+    <ul>
+      <li><strong>Hierarchy</strong>: Levels of authority</li>
+      <li><strong>Division of Labor</strong>: Specialization of tasks</li>
+      <li><strong>Coordination Mechanisms</strong>: Ensure collaboration</li>
+      <li><strong>Span of Control</strong>: Number of employees per manager</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>2. Types of Organizational Structures</h2>
+
+    <h3>2.1 Functional Structure</h3>
+    <p>Organized by specialized functions like Marketing, Finance, HR.</p>
+
+    <h3>2.2 Divisional Structure</h3>
+    <p>Divided by product, region, or service. Example: Coca-Cola’s regions.</p>
+
+    <h3>2.3 Matrix Structure</h3>
+    <p>Combines functional and divisional, employees report to two managers.</p>
+
+    <h3>2.4 Flat Structure</h3>
+    <p>Few levels, wide span of control, common in startups.</p>
+
+    <h3>2.5 Network Structure</h3>
+    <p>Decentralized; depends on outsourcing and partnerships.</p>
+  </section>
+
+  <section>
+    <h2>3. Elements of Organizational Design</h2>
+    <ul>
+      <li><strong>Work Specialization</strong></li>
+      <li><strong>Departmentalization</strong></li>
+      <li><strong>Chain of Command</strong></li>
+      <li><strong>Span of Control</strong></li>
+      <li><strong>Centralization vs Decentralization</strong></li>
+      <li><strong>Formalization</strong></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. Factors Influencing Organizational Structure</h2>
+    <ul>
+      <li>Strategy</li>
+      <li>Size</li>
+      <li>Technology</li>
+      <li>Environment</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Contemporary Trends in Organizational Design</h2>
+    <ul>
+      <li>Team-Based Structures</li>
+      <li>Boundaryless Organizations</li>
+      <li>Virtual Organizations</li>
+      <li>Lean Structures</li>
+      <li>Hybrid Work Models</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. Challenges in Organizational Design</h2>
+    <ul>
+      <li>Balancing Flexibility and Control</li>
+      <li>Cultural Alignment</li>
+      <li>Change Management</li>
+      <li>Globalization</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>7. Advanced Insights</h2>
+    <ul>
+      <li>Contingency Approach</li>
+      <li>Organizational Life Cycle</li>
+      <li>Span of Control Metrics</li>
+      <li>Technology’s Role</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Quiz: Test Your Knowledge</h2>
+    <form id="quizForm">
+      <ol>
+        <li>Which organizational structure divides the company into departments like marketing and finance?<br>
+          <input type="radio" name="q1"> A) Divisional<br>
+          <input type="radio" name="q1"> B) Functional<br>
+          <input type="radio" name="q1"> C) Matrix<br>
+          <input type="radio" name="q1"> D) Flat<br>
+        </li>
+        <li>A matrix structure involves employees reporting to only one supervisor. (True/False)<br>
+          <input type="radio" name="q2"> True<br>
+          <input type="radio" name="q2"> False<br>
+        </li>
+        <li>The degree to which an organization uses standardized rules is called _________. (Fill-in-the-blank)</li>
+        <li>Which structure is most suitable for a small startup with a dynamic environment?<br>
+          <input type="radio" name="q4"> A) Functional<br>
+          <input type="radio" name="q4"> B) Divisional<br>
+          <input type="radio" name="q4"> C) Flat<br>
+          <input type="radio" name="q4"> D) Matrix<br>
+        </li>
+        <li>Name two factors that influence the choice of organizational structure. (Short Answer)</li>
+        <li>Centralized organizations delegate decision-making to lower-level employees. (True/False)<br>
+          <input type="radio" name="q6"> True<br>
+          <input type="radio" name="q6"> False<br>
+        </li>
+        <li>Which element of organizational design refers to grouping jobs into departments?<br>
+          <input type="radio" name="q7"> A) Span of Control<br>
+          <input type="radio" name="q7"> B) Departmentalization<br>
+          <input type="radio" name="q7"> C) Chain of Command<br>
+          <input type="radio" name="q7"> D) Work Specialization<br>
+        </li>
+        <li>A ________ structure relies on external partnerships for key functions. (Fill-in-the-blank)</li>
+        <li>What is one advantage of a divisional structure? (Short Answer)</li>
+        <li>Which trend involves minimizing barriers between departments and external stakeholders?<br>
+          <input type="radio" name="q10"> A) Team-Based Structure<br>
+          <input type="radio" name="q10"> B) Boundaryless Organization<br>
+          <input type="radio" name="q10"> C) Lean Structure<br>
+          <input type="radio" name="q10"> D) Virtual Organization<br>
+        </li>
+      </ol>
+      <button type="button" class="btn" onclick="submitQuiz()">Submit Quiz</button>
+      <div class="quiz-result" id="quizResult"></div>
+    </form>
+
+    <script>
+      function submitQuiz() {
+        let filled = true;
+        for (let i = 1; i <= 10; i++) {
+          const inputs = document.getElementsByName("q" + i);
+          let answered = false;
+          for (let input of inputs) {
+            if (input.checked || input.value.trim() !== "") {
+              answered = true;
+              break;
+            }
+          }
+          if (!answered) filled = false;
+        }
+        document.getElementById("quizResult").innerText = filled ? "Quiz submitted!" : "Please answer all questions.";
+      }
+    </script>
+  </section>
+
+  <div class="navigation">
+    <a href="business-topic2.html">← Previous Topic</a>
+    <a href="business-topic4.html">Next Topic →</a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cloud Computing - EduHub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #e3f2fd;
+      color: #222;
+    }
+    header {
+      background: #1e88e5;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      background: #1565c0;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+      line-height: 1.7;
+    }
+    .notes, .quiz {
+      margin-top: 30px;
+    }
+    pre {
+      background: #bbdefb;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .quiz button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #1e88e5;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .quiz button:hover {
+      background: #1565c0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Introduction to Cloud Computing</h1>
+    <p>Learn how the internet powers modern software and services</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="course-cs.html">Back to Course</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="payment.html">Upgrade</a>
+  </nav>
+
+  <div class="container">
+    <div class="notes">
+      <h2>📝 Learning Notes</h2>
+
+      <h3>☁️ What is Cloud Computing?</h3>
+      <p>Cloud computing is the delivery of computing services—like servers, storage, databases, networking, software—over the internet (“the cloud”) to offer faster innovation, flexible resources, and economies of scale.</p>
+
+      <h3>💡 Why Cloud?</h3>
+      <ul>
+        <li><strong>Cost-effective:</strong> No need to buy physical servers.</li>
+        <li><strong>Scalable:</strong> Easily increase or decrease resources.</li>
+        <li><strong>Accessible:</strong> Access services anytime, anywhere via the internet.</li>
+        <li><strong>Reliable:</strong> Most cloud providers offer 99.9% uptime guarantees.</li>
+      </ul>
+
+      <h3>🔧 Service Models</h3>
+      <ul>
+        <li><strong>IaaS (Infrastructure as a Service):</strong> Rent virtual servers, storage (e.g., AWS EC2, Google Compute Engine).</li>
+        <li><strong>PaaS (Platform as a Service):</strong> Build apps without managing infrastructure (e.g., Heroku, Google App Engine).</li>
+        <li><strong>SaaS (Software as a Service):</strong> Access apps online (e.g., Gmail, Dropbox, Microsoft 365).</li>
+      </ul>
+
+      <h3>🏢 Deployment Models</h3>
+      <ul>
+        <li><strong>Public Cloud:</strong> Services offered over the internet (e.g., AWS, Azure).</li>
+        <li><strong>Private Cloud:</strong> Used by one organization, not shared publicly.</li>
+        <li><strong>Hybrid Cloud:</strong> Combination of public and private cloud.</li>
+      </ul>
+
+      <h3>🛡️ Cloud Security</h3>
+      <ul>
+        <li>Data encryption (at rest and in transit)</li>
+        <li>Identity and Access Management (IAM)</li>
+        <li>Firewalls and compliance standards</li>
+        <li>Automatic backups and disaster recovery</li>
+      </ul>
+    </div>
+
+    <div class="quiz">
+      <h2>🧠 Quick Quiz</h2>
+      <form id="quizForm">
+        <div>
+          <h3>1. What does cloud computing deliver?</h3>
+          <input type="radio" name="q1" value="a"> Weather services<br>
+          <input type="radio" name="q1" value="b"> Computing services over the internet<br>
+          <input type="radio" name="q1" value="c"> Manual hardware only<br>
+        </div>
+
+        <div>
+          <h3>2. Which is an example of SaaS?</h3>
+          <input type="radio" name="q2" value="a"> Gmail<br>
+          <input type="radio" name="q2" value="b"> AWS EC2<br>
+          <input type="radio" name="q2" value="c"> Kubernetes<br>
+        </div>
+
+        <div>
+          <h3>3. What does PaaS allow developers to do?</h3>
+          <input type="radio" name="q3" value="a"> Buy servers<br>
+          <input type="radio" name="q3" value="b"> Build applications without worrying about infrastructure<br>
+          <input type="radio" name="q3" value="c"> Manage physical routers<br>
+        </div>
+
+        <div>
+          <h3>4. Which cloud type is used by one organization only?</h3>
+          <input type="radio" name="q4" value="a"> Public cloud<br>
+          <input type="radio" name="q4" value="b"> Private cloud<br>
+          <input type="radio" name="q4" value="c"> Fog computing<br>
+        </div>
+
+        <div>
+          <h3>5. What is a common benefit of cloud computing?</h3>
+          <input type="radio" name="q5" value="a"> Manual scaling<br>
+          <input type="radio" name="q5" value="b"> On-demand resource scaling<br>
+          <input type="radio" name="q5" value="c"> Installing floppy disks<br>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+      </form>
+      <p id="quizResult"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "a") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q4"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q5"]:checked')?.value === "b") score++;
+      document.getElementById("quizResult").textContent = "✅ You scored " + score + "/5";
+    });
+  </script>
+</body>
+</html>

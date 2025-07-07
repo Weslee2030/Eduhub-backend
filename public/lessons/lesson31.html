@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Machine Learning - EduHub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f1f8e9;
+      color: #222;
+    }
+    header {
+      background: #558b2f;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      background: #33691e;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+      line-height: 1.7;
+    }
+    .notes, .quiz {
+      margin-top: 30px;
+    }
+    pre {
+      background: #dcedc8;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .quiz button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #558b2f;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .quiz button:hover {
+      background: #33691e;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Introduction to Machine Learning</h1>
+    <p>Teaching computers to learn from data</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="course-cs.html">Back to Course</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="payment.html">Upgrade</a>
+  </nav>
+
+  <div class="container">
+    <div class="notes">
+      <h2>📝 Learning Notes</h2>
+
+      <h3>🤖 What is Machine Learning?</h3>
+      <p>Machine Learning (ML) is a subset of Artificial Intelligence (AI) that allows systems to automatically learn and improve from experience without being explicitly programmed. ML uses algorithms to find patterns in data and make decisions or predictions.</p>
+
+      <h3>🔍 Types of Machine Learning</h3>
+      <ul>
+        <li><strong>Supervised Learning:</strong> The model learns from labeled data (e.g., predicting prices, spam detection).</li>
+        <li><strong>Unsupervised Learning:</strong> The model finds hidden patterns in data without labels (e.g., customer segmentation).</li>
+        <li><strong>Reinforcement Learning:</strong> The model learns by interacting with its environment and receiving rewards or penalties (e.g., training robots, game AI).</li>
+      </ul>
+
+      <h3>📊 Common ML Algorithms</h3>
+      <ul>
+        <li>Linear Regression</li>
+        <li>Decision Trees</li>
+        <li>K-Means Clustering</li>
+        <li>Support Vector Machines (SVM)</li>
+        <li>Neural Networks</li>
+      </ul>
+
+      <h3>📦 Applications of ML</h3>
+      <ul>
+        <li>Speech and image recognition</li>
+        <li>Spam filtering</li>
+        <li>Recommender systems (like Netflix, YouTube)</li>
+        <li>Medical diagnosis and fraud detection</li>
+      </ul>
+
+      <h3>⚙️ Example ML Flow</h3>
+      <pre>
+1. Collect and clean data
+2. Choose algorithm (e.g., linear regression)
+3. Train the model using data
+4. Test the model's accuracy
+5. Use the model to make predictions
+      </pre>
+
+      <h3>🧠 Challenges in ML</h3>
+      <ul>
+        <li>Need for large and clean datasets</li>
+        <li>Model overfitting or underfitting</li>
+        <li>Bias in training data</li>
+        <li>Computational resources</li>
+      </ul>
+    </div>
+
+    <div class="quiz">
+      <h2>🧠 Quick Quiz</h2>
+      <form id="quizForm">
+        <div>
+          <h3>1. What is the goal of Machine Learning?</h3>
+          <input type="radio" name="q1" value="a"> Program every rule<br>
+          <input type="radio" name="q1" value="b"> Learn from data automatically<br>
+          <input type="radio" name="q1" value="c"> Build hardware<br>
+        </div>
+
+        <div>
+          <h3>2. Which learning type uses labeled data?</h3>
+          <input type="radio" name="q2" value="a"> Unsupervised<br>
+          <input type="radio" name="q2" value="b"> Reinforcement<br>
+          <input type="radio" name="q2" value="c"> Supervised<br>
+        </div>
+
+        <div>
+          <h3>3. What is clustering used for?</h3>
+          <input type="radio" name="q3" value="a"> Classification<br>
+          <input type="radio" name="q3" value="b"> Grouping similar data<br>
+          <input type="radio" name="q3" value="c"> Calculating taxes<br>
+        </div>
+
+        <div>
+          <h3>4. Which algorithm is used in regression tasks?</h3>
+          <input type="radio" name="q4" value="a"> Linear Regression<br>
+          <input type="radio" name="q4" value="b"> K-Means<br>
+          <input type="radio" name="q4" value="c"> Decision Tree<br>
+        </div>
+
+        <div>
+          <h3>5. What is a challenge in ML?</h3>
+          <input type="radio" name="q5" value="a"> Too much memory<br>
+          <input type="radio" name="q5" value="b"> Finding clean and enough data<br>
+          <input type="radio" name="q5" value="c"> Printing hardware manuals<br>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+      </form>
+      <p id="quizResult"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "c") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q4"]:checked')?.value === "a") score++;
+      if (document.querySelector('input[name="q5"]:checked')?.value === "b") score++;
+      document.getElementById("quizResult").textContent = "✅ You scored " + score + "/5";
+    });
+  </script>
+</body>
+</html>

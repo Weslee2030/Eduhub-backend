@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EduHub - Business Management Topic 2: Planning in Business Management</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    section {
+      margin-bottom: 30px;
+    }
+    .btn-download, .btn-submit {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn-download:hover, .btn-submit:hover {
+      background-color: #2980b9;
+    }
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+    .quiz-result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+    .navigation a {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .navigation a:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Topic 2: Planning in Business Management</h1>
+
+  <section>
+    <h2>Definition of Planning</h2>
+    <p>Planning is the process of setting objectives and determining the best course of action to achieve them. It involves forecasting, decision-making, and establishing strategies to guide an organization toward its goals.</p>
+  </section>
+
+  <section>
+    <h2>Importance of Planning</h2>
+    <ul>
+      <li>Provides direction and focus for the organization.</li>
+      <li>Reduces uncertainty by anticipating risks and opportunities.</li>
+      <li>Enhances efficiency by allocating resources effectively.</li>
+      <li>Facilitates coordination among departments.</li>
+      <li>Serves as a basis for control and performance evaluation.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Types of Planning</h2>
+    <ul>
+      <li><strong>Strategic Planning:</strong> Long-term goals. Example: Entering a new market.</li>
+      <li><strong>Tactical Planning:</strong> Medium-term plans. Example: Department marketing campaigns.</li>
+      <li><strong>Operational Planning:</strong> Short-term routine tasks. Example: Daily staff scheduling.</li>
+      <li><strong>Contingency Planning:</strong> Preparing for unexpected events. Example: Supply chain disruption plan.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Steps in the Planning Process</h2>
+    <ol>
+      <li>Define Objectives (SMART goals).</li>
+      <li>Analyze the Environment (SWOT, PESTLE).</li>
+      <li>Identify Alternatives.</li>
+      <li>Evaluate Alternatives.</li>
+      <li>Select the Best Alternative.</li>
+      <li>Implement the Plan.</li>
+      <li>Monitor and Evaluate.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Tools and Techniques for Planning</h2>
+    <ul>
+      <li>SWOT Analysis</li>
+      <li>PESTLE Analysis</li>
+      <li>Budgeting</li>
+      <li>Forecasting</li>
+      <li>Gantt Charts</li>
+      <li>Decision Trees</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Characteristics of Effective Planning</h2>
+    <ul>
+      <li>Goal-Oriented</li>
+      <li>Flexible</li>
+      <li>Realistic</li>
+      <li>Comprehensive</li>
+      <li>Time-Bound</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Challenges in Planning</h2>
+    <ul>
+      <li>Inaccurate forecasting</li>
+      <li>Resistance to change</li>
+      <li>Resource limitations</li>
+      <li>Over-planning causing delays</li>
+      <li>Poor communication</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Role of Managers in Planning</h2>
+    <p>Top managers handle strategic planning, middle managers handle tactical planning, and lower-level managers execute operational planning.</p>
+  </section>
+
+  <section>
+    <h2>Download Notes</h2>
+    <button class="btn-download" onclick="downloadNotes()">Download Notes</button>
+    <script>
+      function downloadNotes() {
+        const text = document.body.innerText;
+        const blob = new Blob([text], { type: 'text/plain' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'Business_Management_Topic2_Planning.txt';
+        a.click();
+      }
+    </script>
+  </section>
+
+  <section>
+    <h2>Quiz: Test Your Knowledge</h2>
+    <form id="quizForm">
+      <ol>
+        <li>What is the primary purpose of planning in an organization?<br>
+          <input type="radio" name="q1" value="a"> To control employees<br>
+          <input type="radio" name="q1" value="b"> To set direction and achieve objectives<br>
+        </li>
+        <li>Differentiate strategic, tactical, and operational planning.<br>
+          <input type="radio" name="q2" value="a"> Based on job levels<br>
+          <input type="radio" name="q2" value="b"> Based on timeframes and decision levels<br>
+        </li>
+        <li>List the steps in planning.<br>
+          <input type="radio" name="q3" value="a"> Random guessing<br>
+          <input type="radio" name="q3" value="b"> SMART goals, environment analysis, alternatives, implementation, monitoring<br>
+        </li>
+        <li>How does SWOT aid planning?<br>
+          <input type="radio" name="q4" value="a"> It motivates employees<br>
+          <input type="radio" name="q4" value="b"> Identifies strengths, weaknesses, opportunities, and threats<br>
+        </li>
+        <li>What are SMART objectives?<br>
+          <input type="radio" name="q5" value="a"> Vague and general<br>
+          <input type="radio" name="q5" value="b"> Specific, Measurable, Achievable, Relevant, Time-bound<br>
+        </li>
+        <li>Why is contingency planning important?<br>
+          <input type="radio" name="q6" value="a"> It slows decisions<br>
+          <input type="radio" name="q6" value="b"> It prepares for uncertainties<br>
+        </li>
+        <li>Name two planning challenges.<br>
+          <input type="radio" name="q7" value="a"> Over-planning, resistance to change<br>
+          <input type="radio" name="q7" value="b"> Parties and celebrations<br>
+        </li>
+        <li>How do Gantt charts help?<br>
+          <input type="radio" name="q8" value="a"> They show financial risks<br>
+          <input type="radio" name="q8" value="b"> They visualize timelines and tasks<br>
+        </li>
+        <li>Why is flexibility important in planning?<br>
+          <input type="radio" name="q9" value="a"> Plans always work perfectly<br>
+          <input type="radio" name="q9" value="b"> Environments change constantly<br>
+        </li>
+        <li>Role of middle managers in planning?<br>
+          <input type="radio" name="q10" value="a"> Execute daily operations<br>
+          <input type="radio" name="q10" value="b"> Create tactical plans<br>
+        </li>
+      </ol>
+      <button type="button" class="btn-submit" onclick="submitQuiz()">Submit Answers</button>
+      <div class="quiz-result" id="quizResult"></div>
+    </form>
+
+    <script>
+      function submitQuiz() {
+        const answers = {
+          q1: "b", q2: "b", q3: "b", q4: "b", q5: "b",
+          q6: "b", q7: "a", q8: "b", q9: "b", q10: "b"
+        };
+        let score = 0;
+        for (let i = 1; i <= 10; i++) {
+          const selected = document.querySelector(`input[name="q${i}"]:checked`);
+          if (selected && selected.value === answers[`q${i}`]) {
+            score++;
+          }
+        }
+        document.getElementById("quizResult").innerText = `You scored ${score} out of 10.`;
+      }
+    </script>
+  </section>
+
+  <div class="navigation">
+    <a href="business.html">← Back to Introduction</a>
+    <a href="business-topic3.html">Next Topic →</a>
+  </div>
+
+</body>
+</html>

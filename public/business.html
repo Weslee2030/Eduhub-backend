@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EduHub: Business Management - Introduction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 20px;
+      color: #333;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+    }
+
+    .btn {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      margin: 10px 0;
+    }
+
+    .btn:hover {
+      background-color: #2980b9;
+    }
+
+    .quiz-result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .next-btn {
+      text-align: right;
+      margin-top: 40px;
+    }
+
+    .next-btn a {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .next-btn a:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>EduHub: Business Management - Introduction</h1>
+  <p>⏱ Estimated time: 20 minutes • Lesson 1 of 10</p>
+
+  <section>
+    <button class="btn" onclick="downloadNotes()">⬇ Download Notes</button>
+    <script>
+      function downloadNotes() {
+        const text = document.body.innerText;
+        const blob = new Blob([text], { type: 'text/plain' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'Business_Management_Topic1_Introduction.txt';
+        a.click();
+      }
+    </script>
+  </section>
+
+  <section>
+    <h2>1. Definition and Scope of Business Management</h2>
+    <p>Business Management involves planning, organizing, leading, and controlling resources to achieve organizational goals efficiently.</p>
+    <ul>
+      <li><strong>Planning:</strong> Setting objectives (e.g., sales targets)</li>
+      <li><strong>Organizing:</strong> Structuring resources (e.g., creating departments)</li>
+      <li><strong>Leading:</strong> Motivating employees (e.g., team inspiration)</li>
+      <li><strong>Controlling:</strong> Monitoring performance (e.g., budget reviews)</li>
+    </ul>
+    <p><strong>Business Objectives:</strong> Profit, growth, sustainability, social responsibility.</p>
+  </section>
+
+  <section>
+    <h2>Types of Businesses</h2>
+    <ul>
+      <li>Sole Proprietorship: Single owner, unlimited liability</li>
+      <li>Partnership: Multiple owners (e.g., law firm)</li>
+      <li>Corporation: Separate legal entity (e.g., Apple Inc.)</li>
+      <li>Non-Profits: Social impact focus (e.g., Red Cross)</li>
+    </ul>
+    <p><strong>Sectors:</strong> Primary, Secondary, Tertiary, Quaternary</p>
+  </section>
+
+  <section>
+    <h2>2. Key Concepts in Business Management</h2>
+    <ul>
+      <li>Stakeholders: Customers, employees, shareholders, etc.</li>
+      <li>Decision-Making: Evaluating alternatives</li>
+    </ul>
+    <p><strong>Factors of Production:</strong></p>
+    <ul>
+      <li>Land – Natural resources</li>
+      <li>Labor – Human effort</li>
+      <li>Capital – Tools/machinery</li>
+      <li>Enterprise – Entrepreneurial vision</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. Role of Managers</h2>
+    <ul>
+      <li>Responsibilities: Goal-setting, resource allocation, conflict resolution</li>
+      <li>Skills: Technical, interpersonal, conceptual</li>
+      <li>Styles: Autocratic, democratic, laissez-faire</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Quiz: Test Your Knowledge</h2>
+    <form id="quizForm">
+      <ol>
+        <li>What is the primary goal of business management?<br>
+          <input type="radio" name="q1" value="b"> Achieving organizational goals efficiently<br>
+          <input type="radio" name="q1" value="a"> Maximizing employee satisfaction<br>
+        </li>
+        <li>Which is NOT a factor of production?<br>
+          <input type="radio" name="q2" value="c"> Marketing<br>
+          <input type="radio" name="q2" value="a"> Land<br>
+        </li>
+        <li>Explain the difference between autocratic and democratic management styles (Short Answer)</li>
+        <li>Describe the “controlling” function with an example (Short Answer)</li>
+        <li>A sole proprietorship is characterized by:<br>
+          <input type="radio" name="q5" value="a"> Unlimited liability and single ownership<br>
+          <input type="radio" name="q5" value="b"> Limited liability and multiple owners<br>
+        </li>
+        <li>A bakery struggles to meet demand. Suggest one strategy for each management function (Case Study)</li>
+        <li>How does globalization impact business management? (Short Answer)</li>
+        <li>Which sector includes knowledge-based services?<br>
+          <input type="radio" name="q8" value="d"> Quaternary<br>
+          <input type="radio" name="q8" value="a"> Primary<br>
+        </li>
+        <li>Why is stakeholder management important? (Short Answer)</li>
+        <li>A tech company launches a product. Describe how it uses the four factors of production (Case Study)</li>
+      </ol>
+      <button type="button" class="btn" onclick="submitQuiz()">Submit Quiz</button>
+      <div class="quiz-result" id="quizResult"></div>
+    </form>
+
+    <script>
+      function submitQuiz() {
+        const correctAnswers = {
+          q1: "b", q2: "c", q5: "a", q8: "d"
+        };
+        let score = 0;
+        for (let key in correctAnswers) {
+          const selected = document.querySelector(`input[name="${key}"]:checked`);
+          if (selected && selected.value === correctAnswers[key]) {
+            score++;
+          }
+        }
+        document.getElementById("quizResult").innerText = `You scored ${score} out of 4 (MCQs only).`;
+      }
+    </script>
+  </section>
+
+  <div class="next-btn">
+    <a href="business-topic2.html">Next Topic →</a>
+  </div>
+
+</body>
+</html>

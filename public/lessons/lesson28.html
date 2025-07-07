@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DevOps and CI/CD - EduHub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #ede7f6;
+      color: #222;
+    }
+    header {
+      background: #4527a0;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      background: #311b92;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+      line-height: 1.7;
+    }
+    .notes, .quiz {
+      margin-top: 30px;
+    }
+    pre {
+      background: #d1c4e9;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .quiz button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #512da8;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .quiz button:hover {
+      background: #311b92;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DevOps and CI/CD</h1>
+    <p>Streamline development and deployment with automation</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="course-cs.html">Back to Course</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="payment.html">Upgrade</a>
+  </nav>
+
+  <div class="container">
+    <div class="notes">
+      <h2>📝 Learning Notes</h2>
+
+      <h3>⚙️ What is DevOps?</h3>
+      <p>DevOps is a combination of **Development** and **Operations**. It focuses on improving collaboration between developers and IT teams to build, test, and release software faster and more reliably.</p>
+
+      <h3>🔁 Key DevOps Practices</h3>
+      <ul>
+        <li><strong>Continuous Integration (CI):</strong> Regularly merging code into a shared repository, followed by automated tests</li>
+        <li><strong>Continuous Delivery (CD):</strong> Automatically preparing tested code for deployment</li>
+        <li><strong>Infrastructure as Code (IaC):</strong> Managing infrastructure with code (e.g., Terraform, Ansible)</li>
+        <li><strong>Monitoring & Logging:</strong> Tracking application performance and issues</li>
+      </ul>
+
+      <h3>📦 What is CI/CD?</h3>
+      <p>CI/CD automates the steps in software delivery: coding, building, testing, and deploying. This reduces manual errors, increases speed, and ensures consistent builds.</p>
+
+      <h3>🛠️ CI/CD Tools</h3>
+      <ul>
+        <li><strong>GitHub Actions</strong> – Automates workflows right from GitHub</li>
+        <li><strong>Jenkins</strong> – Open-source automation server</li>
+        <li><strong>GitLab CI</strong> – Built-in CI/CD with GitLab</li>
+        <li><strong>CircleCI</strong>, <strong>Travis CI</strong>, <strong>Bitbucket Pipelines</strong></li>
+      </ul>
+
+      <h3>🚀 Example CI/CD Flow</h3>
+      <pre>
+1. Push code to GitHub
+2. GitHub Action runs tests
+3. Build is automatically deployed to staging
+4. After approval, it deploys to production
+      </pre>
+
+      <h3>✅ Benefits of DevOps</h3>
+      <ul>
+        <li>Faster delivery of features</li>
+        <li>Fewer deployment errors</li>
+        <li>Better collaboration between teams</li>
+        <li>Higher software quality and reliability</li>
+      </ul>
+    </div>
+
+    <div class="quiz">
+      <h2>🧠 Quick Quiz</h2>
+      <form id="quizForm">
+        <div>
+          <h3>1. What does DevOps stand for?</h3>
+          <input type="radio" name="q1" value="a"> Developer Operations<br>
+          <input type="radio" name="q1" value="b"> Development and Operations<br>
+          <input type="radio" name="q1" value="c"> Device Optimization<br>
+        </div>
+
+        <div>
+          <h3>2. What is the goal of CI?</h3>
+          <input type="radio" name="q2" value="a"> Create UI<br>
+          <input type="radio" name="q2" value="b"> Integrate and test code continuously<br>
+          <input type="radio" name="q2" value="c"> Increase user logins<br>
+        </div>
+
+        <div>
+          <h3>3. What does CD stand for?</h3>
+          <input type="radio" name="q3" value="a"> Central Deployment<br>
+          <input type="radio" name="q3" value="b"> Code Distribution<br>
+          <input type="radio" name="q3" value="c"> Continuous Delivery<br>
+        </div>
+
+        <div>
+          <h3>4. Which is a CI/CD tool?</h3>
+          <input type="radio" name="q4" value="a"> Photoshop<br>
+          <input type="radio" name="q4" value="b"> Jenkins<br>
+          <input type="radio" name="q4" value="c"> Canva<br>
+        </div>
+
+        <div>
+          <h3>5. What’s a benefit of using DevOps?</h3>
+          <input type="radio" name="q5" value="a"> Slower updates<br>
+          <input type="radio" name="q5" value="b"> More errors<br>
+          <input type="radio" name="q5" value="c"> Faster delivery and better collaboration<br>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+      </form>
+      <p id="quizResult"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === "c") score++;
+      if (document.querySelector('input[name="q4"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q5"]:checked')?.value === "c") score++;
+      document.getElementById("quizResult").textContent = "✅ You scored " + score + "/5";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Networks and the Internet - EduHub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #e3f2fd;
+      color: #222;
+    }
+    header {
+      background: #1976d2;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      background: #1565c0;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+      line-height: 1.7;
+    }
+    .notes, .quiz {
+      margin-top: 30px;
+    }
+    pre {
+      background: #e1f5fe;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .quiz button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #1976d2;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .quiz button:hover {
+      background: #0d47a1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Networks and the Internet</h1>
+    <p>How computers connect, communicate, and exchange data</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="course-cs.html">Back to Course</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="payment.html">Upgrade</a>
+  </nav>
+
+  <div class="container">
+    <div class="notes">
+      <h2>📝 Learning Notes</h2>
+
+      <h3>🌐 What is a Network?</h3>
+      <p>A network is a group of connected computers that can share resources and data. The largest network in the world is the Internet.</p>
+
+      <h3>🔗 Types of Networks</h3>
+      <ul>
+        <li><strong>LAN (Local Area Network):</strong> Covers a small area like an office or home</li>
+        <li><strong>WAN (Wide Area Network):</strong> Spans large distances (e.g., the internet)</li>
+        <li><strong>MAN (Metropolitan Area Network):</strong> Covers a city or campus</li>
+      </ul>
+
+      <h3>📬 How Data Travels Online</h3>
+      <p>When you browse the internet, your device sends a request to a server using IP addresses and protocols (HTTP, HTTPS, FTP). Data is split into packets and routed through routers and switches.</p>
+
+      <h3>🧱 Key Network Concepts</h3>
+      <ul>
+        <li><strong>IP Address:</strong> Unique number identifying each device on a network</li>
+        <li><strong>DNS:</strong> Domain Name System translates website names into IPs</li>
+        <li><strong>Router:</strong> Forwards data between networks</li>
+        <li><strong>Switch:</strong> Connects devices within a network</li>
+        <li><strong>Firewall:</strong> Controls incoming and outgoing traffic for security</li>
+      </ul>
+
+      <h3>📦 Network Protocols</h3>
+      <ul>
+        <li><strong>HTTP:</strong> Transfers web pages</li>
+        <li><strong>HTTPS:</strong> Secure HTTP</li>
+        <li><strong>FTP:</strong> Transfers files</li>
+        <li><strong>TCP/IP:</strong> Core internet communication protocol</li>
+      </ul>
+    </div>
+
+    <div class="quiz">
+      <h2>🧠 Quick Quiz</h2>
+      <form id="quizForm">
+        <div>
+          <h3>1. What does LAN stand for?</h3>
+          <input type="radio" name="q1" value="a"> Large Area Network<br>
+          <input type="radio" name="q1" value="b"> Local Area Network<br>
+          <input type="radio" name="q1" value="c"> Light Access Network<br>
+        </div>
+
+        <div>
+          <h3>2. What is the function of DNS?</h3>
+          <input type="radio" name="q2" value="a"> Stores images<br>
+          <input type="radio" name="q2" value="b"> Secures websites<br>
+          <input type="radio" name="q2" value="c"> Translates domain names to IP addresses<br>
+        </div>
+
+        <div>
+          <h3>3. Which protocol is secure?</h3>
+          <input type="radio" name="q3" value="a"> HTTP<br>
+          <input type="radio" name="q3" value="b"> FTP<br>
+          <input type="radio" name="q3" value="c"> HTTPS<br>
+        </div>
+
+        <div>
+          <h3>4. What does a router do?</h3>
+          <input type="radio" name="q4" value="a"> Stores data<br>
+          <input type="radio" name="q4" value="b"> Connects internal devices<br>
+          <input type="radio" name="q4" value="c"> Forwards data between networks<br>
+        </div>
+
+        <div>
+          <h3>5. What is the internet?</h3>
+          <input type="radio" name="q5" value="a"> A mobile app<br>
+          <input type="radio" name="q5" value="b"> A global network of computers<br>
+          <input type="radio" name="q5" value="c"> A device<br>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+      </form>
+      <p id="quizResult"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "c") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === "c") score++;
+      if (document.querySelector('input[name="q4"]:checked')?.value === "c") score++;
+      if (document.querySelector('input[name="q5"]:checked')?.value === "b") score++;
+      document.getElementById("quizResult").textContent = "✅ You scored " + score + "/5";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EduHub Certificate</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      text-align: center;
+      background: #fdfdfd;
+      padding: 40px;
+    }
+    .certificate {
+      border: 10px solid #2c3e50;
+      padding: 50px;
+      border-radius: 20px;
+      width: 80%;
+      margin: auto;
+      background: #ffffff;
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    }
+    h1 {
+      font-size: 40px;
+      color: #2c3e50;
+    }
+    h2, h3 {
+      margin: 10px 0;
+    }
+    .seal {
+      width: 100px;
+      margin-top: 20px;
+    }
+    .professor {
+      margin-top: 40px;
+      font-size: 18px;
+      color: #333;
+    }
+    .cert-number {
+      font-size: 14px;
+      color: #777;
+      margin-top: 10px;
+    }
+    .download-btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+<div class="certificate" id="certificateDiv">
+  <h1>Certificate of Achievement</h1>
+  <p>This is to certify that</p>
+  <h2 id="studentName">[Student Name]</h2>
+  <p>has successfully passed the</p>
+  <h3>Computer Science Exam</h3>
+  <p>with a score of <span id="studentScore">__/30</span></p>
+  <p>Date: <span id="date"></span></p>
+  <img class="seal" src="https://i.imgur.com/kVvZV2f.png" alt="EduHub Seal">
+  <div class="professor">
+    Certified by Prof. Wesley Nyakundi Orina<br>
+    EduHub Lead Instructor
+  </div>
+  <div class="cert-number" id="certNumber">Certificate #: --</div>
+</div>
+
+<button class="download-btn" onclick="downloadCertificate()">Download Certificate</button>
+
+<!-- ✅ Fixed: html2pdf CDN link -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get("name") || "EduHub Student";
+  const score = params.get("score") || "__";
+
+  document.getElementById("studentName").textContent = name;
+  document.getElementById("studentScore").textContent = `${score}/30`;
+
+  const today = new Date();
+  document.getElementById("date").textContent = today.toLocaleDateString();
+
+  const year = today.getFullYear();
+  const random = Math.floor(10000 + Math.random() * 90000);
+  const certNum = `EDU-${year}-${random}`;
+  document.getElementById("certNumber").textContent = `Certificate #: ${certNum}`;
+
+  function downloadCertificate() {
+    const element = document.getElementById("certificateDiv");
+
+    const opt = {
+      margin:       0.5,
+      filename:     `${name.replace(/\s+/g, '_')}_EduHub_Certificate.pdf`,
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save();
+  }
+</script>
+
+</body>
+</html>

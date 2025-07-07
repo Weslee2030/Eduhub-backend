@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduHub Dashboard</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f6f9; }
+    header { background-color: #2c3e50; color: white; padding: 1rem; text-align: center; }
+    .dashboard-container { display: flex; flex-wrap: wrap; padding: 1rem; }
+    .card { background: white; border-radius: 10px; padding: 1rem; margin: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); flex: 1 1 300px; }
+    .progress-bar { height: 20px; background: #ddd; border-radius: 10px; overflow: hidden; }
+    .progress { height: 100%; background: #27ae60; color: white; text-align: center; font-size: 12px; line-height: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+    th, td { padding: 0.5rem; text-align: left; border-bottom: 1px solid #ccc; }
+    .logout-btn { margin-top: 1rem; background: #c0392b; color: white; padding: 0.5rem 1rem; border: none; cursor: pointer; border-radius: 5px; }
+    .btn-group button {
+      margin-right: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+    }
+    .continue-btn { background-color: #3498db; }
+    .certificate-btn { background-color: #2ecc71; }
+    .copy-btn { background-color: #f39c12; margin-left: 10px; color: white; border: none; border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 12px; }
+    .qr { max-width: 150px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎓 EduHub Dashboard</h1>
+    <p>Welcome, <span id="username">Loading...</span></p>
+  </header>
+
+  <div class="dashboard-container">
+    <div class="card" id="courses-card"><h2>Your Courses</h2><p>Loading...</p></div>
+
+    <div class="card">
+      <h2>Quiz Scores</h2>
+      <table>
+        <thead><tr><th>Course</th><th>Score</th></tr></thead>
+        <tbody id="quiz-scores">
+          <tr><td colspan="2">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" id="payment-card"><h2>Payment Status</h2><p>Loading...</p></div>
+
+    <div class="card">
+      <h2>Upcoming Events</h2>
+      <ul>
+        <li>🗓 Business Quiz: July 10</li>
+        <li>🗓 CS Live Class: July 12</li>
+      </ul>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="card">
+      <h2>📞 Contact Details</h2>
+      <p><strong>Name:</strong> Wesley Nyakundi Orina</p>
+      <p><strong>Email:</strong> wesleyorina97@gmail.com</p>
+      <p><strong>Phone:</strong> +254701948450</p>
+    </div>
+
+    <div class="card">
+      <h2>💳 Payment Options</h2>
+      <ul>
+        <li>
+          <strong>M-Pesa:</strong> Till No. <span id="mpesa">8628626</span>
+          <button class="copy-btn" onclick="copyText('mpesa')">Copy</button><br/>
+          <img src="/qrcodes/mpesa.png" class="qr" alt="M-Pesa QR" />
+        </li>
+        <li>
+          <strong>I&M Bank:</strong> Acc No. <span id="bank">00900012341201</span> – Wesley Nyakundi Orina
+          <button class="copy-btn" onclick="copyText('bank')">Copy</button><br/>
+          <img src="/qrcodes/bank.png" class="qr" alt="Bank QR" />
+        </li>
+        <li>
+          <strong>PayPal:</strong> <span id="paypal">wesleyorina97@gmail.com</span>
+          <button class="copy-btn" onclick="copyText('paypal')">Copy</button><br/>
+          <img src="/qrcodes/paypal.png" class="qr" alt="PayPal QR" />
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    async function loadDashboard() {
+      try {
+        const userRes = await fetch('/api/user/me');
+        const user = await userRes.json();
+        document.getElementById("username").textContent = user.name;
+
+        const courseRes = await fetch('/api/courses');
+        const courses = await courseRes.json();
+        const courseCard = document.getElementById("courses-card");
+        courseCard.innerHTML = '<h2>Your Courses</h2>';
+        courses.forEach(course => {
+          const courseSlug = course.title.toLowerCase().replace(/\s+/g, '-');
+          courseCard.innerHTML += `
+            <p><strong>${course.title}</strong></p>
+            <div class="progress-bar">
+              <div class="progress" style="width:${course.progress}%;">${course.progress}%</div>
+            </div>
+            <div class="btn-group" style="margin: 0.5rem 0;">
+              <a href="/courses/${courseSlug}.html">
+                <button class="continue-btn">Continue Learning</button>
+              </a>
+              ${course.progress === 100 ? `
+                <a href="/certificates/${courseSlug}-certificate.pdf?name=${encodeURIComponent(user.name)}" download>
+                  <button class="certificate-btn">🎓 Download Certificate</button>
+                </a>` : ''}
+            </div>
+          `;
+        });
+
+        const quizRes = await fetch('/api/quiz-scores');
+        const quizzes = await quizRes.json();
+        const quizTable = document.getElementById("quiz-scores");
+        quizTable.innerHTML = "";
+        quizzes.forEach(q => {
+          quizTable.innerHTML += `<tr><td>${q.course}</td><td>${q.score}%</td></tr>`;
+        });
+
+        const payRes = await fetch('/api/payments');
+        const payments = await payRes.json();
+        const payCard = document.getElementById("payment-card");
+        payCard.innerHTML = '<h2>Payment Status</h2>';
+        payments.forEach(p => {
+          payCard.innerHTML += `<p>${p.course} - ✅ ${p.status}</p>`;
+        });
+
+      } catch (err) {
+        console.error("Error loading dashboard:", err);
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "/login.html";
+    }
+
+    function copyText(id) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert(`Copied: ${text}`);
+      });
+    }
+
+    loadDashboard();
+  </script>
+</body>
+</html>

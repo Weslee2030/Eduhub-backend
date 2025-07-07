@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduHub Payment Options</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #007bff;
+    }
+    h2 {
+      color: #444;
+      margin-top: 1.5rem;
+    }
+    p {
+      margin: 0.5rem 0;
+    }
+    form {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+    input, textarea {
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .note {
+      font-style: italic;
+      margin-top: 1rem;
+      color: #666;
+    }
+    .contact-btn {
+      display: block;
+      text-align: center;
+      margin-top: 2rem;
+      text-decoration: none;
+      background: #28a745;
+      color: white;
+      padding: 0.75rem;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>EduHub Payment Options</h1>
+
+    <h2>M-Pesa</h2>
+    <p><strong>Till Number:</strong> 8628626</p>
+    <p><strong>Phone:</strong> 0701948450</p>
+
+    <h2>Bank Transfer</h2>
+    <p><strong>Bank Name:</strong> I&M Bank</p>
+    <p><strong>Account Number:</strong> 00906952561251</p>
+    <p><strong>Account Name:</strong> Wesley Nyakundi Orina</p>
+
+    <h2>PayPal</h2>
+    <p><strong>Email:</strong> wesleyorina97@gmail.com</p>
+
+    <p class="note">Note: After making your payment, please send confirmation below or contact us directly.</p>
+
+    <form>
+      <input type="text" placeholder="Your Full Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="4" placeholder="Payment details or confirmation..." required></textarea>
+      <button type="submit">Send Confirmation</button>
+    </form>
+
+    <a href="mailto:wesleyorina97@gmail.com" class="contact-btn">📩 Contact Support</a>
+  </div>
+</body>
+</html>

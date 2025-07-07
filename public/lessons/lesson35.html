@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Internet of Things (IoT) - EduHub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f1f8e9;
+      color: #222;
+    }
+    header {
+      background: #558b2f;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      background: #33691e;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+      line-height: 1.7;
+    }
+    .notes, .quiz {
+      margin-top: 30px;
+    }
+    pre {
+      background: #dcedc8;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .quiz button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #558b2f;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .quiz button:hover {
+      background: #33691e;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Internet of Things (IoT)</h1>
+    <p>Connecting everyday objects to the internet</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="course-cs.html">Back to Course</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="payment.html">Upgrade</a>
+  </nav>
+
+  <div class="container">
+    <div class="notes">
+      <h2>📝 Learning Notes</h2>
+
+      <h3>🌐 What is IoT?</h3>
+      <p>The Internet of Things (IoT) refers to a network of physical devices—such as home appliances, vehicles, wearables, and sensors—embedded with electronics, software, and connectivity that allow them to collect and exchange data.</p>
+
+      <h3>📡 Key Components</h3>
+      <ul>
+        <li><strong>Devices/Sensors:</strong> Collect data from the environment (e.g., temperature, motion).</li>
+        <li><strong>Connectivity:</strong> Wi-Fi, Bluetooth, cellular, or satellite connections to send data.</li>
+        <li><strong>Cloud Computing:</strong> Stores and processes data from IoT devices.</li>
+        <li><strong>User Interface:</strong> Apps or dashboards used to monitor and control devices.</li>
+      </ul>
+
+      <h3>🏠 Common IoT Applications</h3>
+      <ul>
+        <li><strong>Smart Homes:</strong> Thermostats, lights, and locks controlled via apps.</li>
+        <li><strong>Healthcare:</strong> Wearables like smartwatches for heart rate monitoring.</li>
+        <li><strong>Industry:</strong> Smart factories with predictive maintenance systems.</li>
+        <li><strong>Agriculture:</strong> Soil and crop monitoring for smart irrigation.</li>
+        <li><strong>Transportation:</strong> Vehicle tracking, smart parking, autonomous cars.</li>
+      </ul>
+
+      <h3>⚠️ Challenges</h3>
+      <ul>
+        <li><strong>Security:</strong> Devices can be hacked if not protected.</li>
+        <li><strong>Privacy:</strong> Sensitive data is constantly being collected.</li>
+        <li><strong>Interoperability:</strong> Devices from different vendors may not work well together.</li>
+      </ul>
+
+      <h3>🔒 Best Practices</h3>
+      <ul>
+        <li>Use secure communication (HTTPS, encryption)</li>
+        <li>Update firmware regularly</li>
+        <li>Restrict network access to trusted devices only</li>
+        <li>Use strong passwords for IoT devices</li>
+      </ul>
+    </div>
+
+    <div class="quiz">
+      <h2>🧠 Quick Quiz</h2>
+      <form id="quizForm">
+        <div>
+          <h3>1. What does IoT stand for?</h3>
+          <input type="radio" name="q1" value="a"> Internet of Tools<br>
+          <input type="radio" name="q1" value="b"> Internet of Things<br>
+          <input type="radio" name="q1" value="c"> Integration of Tech<br>
+        </div>
+
+        <div>
+          <h3>2. What is the function of sensors in IoT?</h3>
+          <input type="radio" name="q2" value="a"> Display data<br>
+          <input type="radio" name="q2" value="b"> Store passwords<br>
+          <input type="radio" name="q2" value="c"> Collect data from the environment<br>
+        </div>
+
+        <div>
+          <h3>3. Which of the following is a smart home IoT device?</h3>
+          <input type="radio" name="q3" value="a"> Microwave with dial<br>
+          <input type="radio" name="q3" value="b"> Smart thermostat<br>
+          <input type="radio" name="q3" value="c"> Toaster oven<br>
+        </div>
+
+        <div>
+          <h3>4. What is a major concern with IoT?</h3>
+          <input type="radio" name="q4" value="a"> Device size<br>
+          <input type="radio" name="q4" value="b"> Device color<br>
+          <input type="radio" name="q4" value="c"> Security vulnerabilities<br>
+        </div>
+
+        <div>
+          <h3>5. What helps protect data in IoT devices?</h3>
+          <input type="radio" name="q5" value="a"> Encryption<br>
+          <input type="radio" name="q5" value="b"> Making devices louder<br>
+          <input type="radio" name="q5" value="c"> Bright screens<br>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+      </form>
+      <p id="quizResult"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "c") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === "b") score++;
+      if (document.querySelector('input[name="q4"]:checked')?.value === "c") score++;
+      if (document.querySelector('input[name="q5"]:checked')?.value === "a") score++;
+      document.getElementById("quizResult").textContent = "✅ You scored " + score + "/5";
+    });
+  </script>
+</body>
+</html>
