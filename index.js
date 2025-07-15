@@ -1,4 +1,4 @@
-// index.js — EduHub Mock Backend (No Database)
+// index.js — EduHub Live Mock Backend (No MongoDB Required)
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 10000;
@@ -6,17 +6,15 @@ const PORT = process.env.PORT || 10000;
 app.use(express.json());
 app.use(express.static("public"));
 
-// 🧪 Fake Register Route
+// 🔐 Register (Mock)
 app.post("/register", (req, res) => {
   const { email } = req.body;
   return res.status(201).json({ message: `✅ Registered user ${email}` });
 });
 
-// 🧪 Fake Login Route
+// 🔐 Login (Mock)
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
-
-  // ✅ Accept only one test account
   if (email === "test@example.com" && password === "test1234") {
     return res.status(200).json({ message: "✅ Login successful", email });
   } else {
@@ -24,7 +22,7 @@ app.post("/login", (req, res) => {
   }
 });
 
-// 📚 Fake Course API
+// 📚 Courses API
 app.get("/api/courses", (req, res) => {
   res.json([
     { title: "Computer Science", progress: 60 },
@@ -32,7 +30,7 @@ app.get("/api/courses", (req, res) => {
   ]);
 });
 
-// 🧠 Fake Quiz Scores
+// 🧠 Quiz Scores API
 app.get("/api/quiz-scores", (req, res) => {
   res.json([
     { course: "Computer Science", score: 85 },
@@ -40,7 +38,7 @@ app.get("/api/quiz-scores", (req, res) => {
   ]);
 });
 
-// 💳 Fake Payment Status
+// 💳 Payment Status API
 app.get("/api/payments", (req, res) => {
   res.json([
     { course: "Computer Science", status: "Paid" },
@@ -48,7 +46,7 @@ app.get("/api/payments", (req, res) => {
   ]);
 });
 
-// 👤 Fake User Info
+// 👤 User Info API
 app.get("/api/user/me", (req, res) => {
   res.json({
     name: "Wesley Orina",
@@ -56,12 +54,12 @@ app.get("/api/user/me", (req, res) => {
   });
 });
 
-// ✅ Root Route
+// ✅ Root
 app.get("/", (req, res) => {
-  res.send("🎓 EduHub Mock Backend is running.");
+  res.send("🎓 EduHub backend is up and running!");
 });
 
-// 🟢 Start Server
+// 🚀 Start server
 app.listen(PORT, () => {
-  console.log(`✅ EduHub mock backend running at http://localhost:${PORT}`);
+  console.log(`✅ EduHub backend running at http://localhost:${PORT}`);
 });
