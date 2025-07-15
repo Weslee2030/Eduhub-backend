@@ -1,68 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Register | EduHub</title>
-  <style>
-    body { font-family: Arial; padding: 30px; background: #f0f2f5; }
-    form { background: #fff; padding: 20px; border-radius: 10px; width: 300px; margin: auto; }
-    input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; }
-    button { background: #007bff; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; }
-    .error { color: red; font-size: 14px; }
-    .toggle { float: right; margin-top: -30px; margin-right: 10px; cursor: pointer; }
-  </style>
+  <title>Register - EduHub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h2>Register to EduHub</h2>
+  <form id="registerForm">
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button type="submit">Register</button>
+  </form>
+  <p>Already have an account? <a href="login.html">Login here</a></p>
 
-<h2>EduHub – Register</h2>
-<form id="registerForm">
-  <input type="text" id="name" placeholder="Full Name" required />
-  <input type="email" id="email" placeholder="Email" required />
-  <input type="password" id="password" placeholder="Password" required />
-  <span class="toggle" onclick="togglePassword()">👁️</span>
-  <div class="error" id="errorMessage"></div>
-  <button type="submit">Register</button>
-</form>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBF8Y9v5FC4ufQXFalzWSMYuoX74vkbZdA",
+      authDomain: "eduhub-37795.firebaseapp.com",
+      projectId: "eduhub-37795",
+      storageBucket: "eduhub-37795.firebasestorage.app",
+      messagingSenderId: "490785901689",
+      appId: "1:490785901689:android:97619a5daa62475bfb18a8"
+    };
+    firebase.initializeApp(firebaseConfig);
 
-<script>
-  function togglePassword() {
-    const pwd = document.getElementById("password");
-    pwd.type = pwd.type === "password" ? "text" : "password";
-  }
+    document.getElementById("registerForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-  document.getElementById("registerForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-
-    const errorMessage = document.getElementById("errorMessage");
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
-
-    if (!passwordRegex.test(password)) {
-      errorMessage.textContent = "❌ Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.";
-      return;
-    }
-
-    try {
-      const res = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password })
-      });
-
-      const data = await res.json();
-      if (res.ok) {
-        alert("✅ Registration successful! Redirecting to home...");
-        window.location.href = "/index.html";
-      } else {
-        errorMessage.textContent = `❌ ${data.message}`;
-      }
-    } catch (err) {
-      errorMessage.textContent = "❌ Server error. Try again later.";
-    }
-  });
-</script>
-
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          alert("Registration successful!");
+          window.location.href = "dashboard.html";
+        })
+        .catch(error => alert(error.message));
+    });
+  </script>
 </body>
 </html>
